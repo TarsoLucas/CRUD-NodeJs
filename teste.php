@@ -1,7 +1,7 @@
 <?php
 define('FORMULARIO_DE_CADASTRO', 250);
 define('PERSISTIR_ALUNO', 251);
-define('EXLCUIR_ALUNO', 252);
+define('EXCLUIR_ALUNO', 252);
 
 /*
 Aqui estou testando o framework gFW, baseado em PHP 5.0 vanilla e com conexão com DB MySql (Workbench).
@@ -46,11 +46,11 @@ switch ($gPage){
 		
 		break;
 
-	case EXLCUIR_ALUNO:
+	case EXCLUIR_ALUNO:
 		$html .= $o->msgTitle("Aluno Excluído com sucesso.");
 
-		$sql = "DELETE FROM geral_pessoas WHERE id ='". $_REQUEST['id']."'; ";
-		$rs = dbQuery($sql);	
+		$sql = "DELETE FROM geral_pessoas WHERE id ='". $_REQUEST['gId']."'; ";
+		dbQuery($sql);	
 	
 		break;
 
@@ -80,16 +80,10 @@ switch ($gPage){
 		// echo count($mtz);
 		// exit;
 
-		$btnExcluir = $o->button("{icon: trash; size: normal; id: excluir; href: index.php?g=teste&gPage=252&gId='".$row['id']."'}");
-
-		$js = '
-			$("#excluir").click(function() {
-				confirm("Deseja realmente excluir o aluno?" );
-		  	});
-		';
-		$o->addJavascript($js);
+		
 
 		foreach ($rs as $row) {
+			$btnExcluir = $o->button("{icon: trash; size: normal; id: excluir; href: index.php?g=teste&gPage='".EXCLUIR_ALUNO."'&gId='".$row['id']."'}");
 			$mtz =	array();
 			$mtz[] = $btnEditar.$btnExcluir;
 			$mtz[]=	'<-'.$row['id'];
@@ -99,6 +93,14 @@ switch ($gPage){
 			$mtz[]=	'<-'.$row['nome'];
 			$html .= $o->tableRow($mtz, 'detail');
 		}	
+
+		$js = '
+			$("#excluir").click(function() {
+				confirm("Deseja realmente excluir o aluno?" );
+		  	});
+		';
+		$o->addJavascript($js);
+		
 		$html .= $o->tableEnd();
 
 
