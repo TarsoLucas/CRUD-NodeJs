@@ -53,7 +53,7 @@ switch ($gPage) {
 		$mtz[] = "<-RENACH";
 		$mtz[] = "<-CPF";
 		$mtz[] = "<-RG";
-		$html.= $o->tableRow($mtz, 'header');
+		$html .= $o->tableRow($mtz, 'header');
 
 		$sql = "SELECT id, apelido, cpf_cnpj, renach_pago, nome FROM geral_pessoas;";
 		$rs = dbQuery($sql);
@@ -75,11 +75,8 @@ switch ($gPage) {
 
 		$js = '
 			function deletarAluno(id) {
-				mensagem = "Gostaria de excluir o aluno "+id+"?";
-				console.log(mensagem);
-
 				bootbox.confirm({
-					message: mensagem,
+					message: "Gostaria de excluir o aluno "+id+"?",
 					buttons: {
 						confirm: {
 							label: "Sim",
@@ -92,10 +89,7 @@ switch ($gPage) {
 					},
 					callback: function (result) {
 						if(result) {
-							linkExclusao = "'.$o->page.'&gPage='.EXCLUIR_ALUNO.'&gId='.$row['id'].'";
-
-							window.location = linkExclusao
-							console.log("This was logged in the callback: " + result);
+							window.location = "'.$o->page.'&gPage='.EXCLUIR_ALUNO.'&gId='.$row['id'].'";
 						}
 					}
 				});
