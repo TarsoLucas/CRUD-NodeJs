@@ -57,7 +57,7 @@ switch ($gPage){
 	default:
 		$html.= $o->msgTitle("Matrícula testes");
 
-		$html .= $o->button("{icon: plus; caption: Novo; hint: Cadastrar um novo aluno; style: info; size: normal; href: index.php?g=teste&gPage=250}");
+		$html .= $o->button("{icon: plus; caption: Novo; hint: Cadastrar um novo aluno; style: info; size: normal; href: index.php?g=teste&gPage='".FORMULARIO_DE_CADASTRO."'}");
 
 			//$js = 'document.getElementById("nome").addEventListener("click", function(){
 			//	alert("clicado")
