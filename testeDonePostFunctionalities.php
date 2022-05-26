@@ -17,6 +17,7 @@ switch ($gPage) {
 			$html .= $o->msgSubTitle('Cadastrar novo aluno');
 		}
 
+<<<<<<< HEAD:testeDonePostFunctionalities.php
 		$js ='
 		function checarNota(numero) {
 			if (numero) {
@@ -58,6 +59,14 @@ switch ($gPage) {
 						}
 					}
 				});
+=======
+		function checarNota($rs) {
+			foreach ($rs as $row) {
+				if ($row['numero']) {
+					$fila = $row['numero'];
+					return $fila;
+				}
+>>>>>>> 2a4d31c39961809a1bf162b11dcdd0381cb63ac6:testePostDoneFunctions.php
 			}
 		}';
 
