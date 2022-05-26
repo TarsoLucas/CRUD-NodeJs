@@ -22,7 +22,8 @@ switch ($gPage) {
 		function checarNota($rs) {
 			foreach ($rs as $row) {
 				if ($row['numero']) {
-					return $row['numero'];
+					$fila = $row['numero'];
+					return $fila;
 				}
 			}
 		}
